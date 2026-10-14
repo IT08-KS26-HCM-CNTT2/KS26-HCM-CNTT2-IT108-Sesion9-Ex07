@@ -1,0 +1,32 @@
+
+PHẦN 1: PHÂN TÍCH LỖI
+1. Lỗi dính cụm từ khóa tiêu đề (Heading) và thiếu khoảng trắng:
+- Vị trí: Đoạn `###Lưu ý quan trọng`
+- Lỗi cụ thể: Dùng `###` nhưng viết dính liền với chữ "Lưu ý quan trọng" và thiếu khoảng trắng sau `###`.
+- Hậu quả khi render: Hệ thống Parser không nhận diện đây là tiêu đề cấp 3, văn bản sẽ hiển thị nguyên văn dạng chữ thường `###Lưu ý quan trọng` hoặc bị lỗi định dạng dính dòng.
+2. Lỗi thiếu dấu cách (space) trong danh sách (List):
+- Vị trí: Các dòng `-Bước 1:`, `-Bước 2:`, `-Bước 3:`, `-Bước 4:`
+- Lỗi cụ thể: Thiếu khoảng trắng giữa dấu gạch ngang `-` và từ "Bước".
+- Hậu quả khi render: Trình duyệt không nhận diện đây là các mục danh sách (bullet list), khiến chúng hiển thị thành văn bản thông thường trên cùng một dòng hoặc không tạo ra các dấu chấm/gạch đầu dòng theo ý muốn.
+3. Lỗi sai định dạng in đậm và thiếu ký tự đóng:
+- Vị trí: Đoạn định dạng tên repository `**HNKS25CNTT1_IT101_Session08` và đoạn cuối `*Nộp muộn sẽ bị trừ 50% điểm!**`
+- Lỗi cụ thể: 
+  + Tên repository thiếu dấu sao kép đóng `**` ở cuối đoạn.
+  + Đoạn cảnh báo cuối dùng kết hợp sai ký tự mở `*` (in nghiêng) nhưng lại đóng bằng `**` (in đậm) và thừa dấu sao ở cuối cùng.
+- Hậu quả khi render: Văn bản không thể in đậm đúng chỗ, làm lộ nguyên các dấu sao `*` ra ngoài giao diện trang web, gây mất thẩm mỹ và khó đọc.
+4. Lỗi cấu trúc cú pháp Link sai:
+- Vị trí: Đoạn liên kết `[GitHub]( [github.com] )`
+- Lỗi cụ thể: Có khoảng trắng thừa và sử dụng cấu trúc lồng ngoặc không hợp lệ bên trong ngoặc tròn.
+- Hậu quả khi render: Link bị hỏng, không thể bấm vào để chuyển hướng đến trang đích.
+PHẦN 2: SỬA LỖI VÀ HOÀN THIỆN ĐOẠN MARKDOWN
+Hướng Dẫn Nộp Bài Tập - Session 08
+Lưu ý quan trọng
+Các bước nộp bài:
+- Bước 1: Tạo tài khoản GitHub tại [GitHub](https://github.com)
+- Bước 2: Tạo repository mới đặt tên theo định dạng **HNKS25CNTT1_IT101_Session08**
+- Bước 3: Upload file .md của bài làm lên repository
+- Bước 4: Copy đường dẫn và nộp lên *Portal*
+Deadline: Chủ nhật 23:59 — *Nộp muộn sẽ bị trừ 50% điểm!*
+GIẢI ĐÁP BẪY DỮ LIỆU (CÂU HỎI PHỤ)
+- Nếu sinh viên dán đường link GitHub mà quên gõ `https://` ở đầu (ví dụ chỉ ghi `github.com/...`), trình duyệt hoặc Markdown Parser sẽ hiểu đây là một **đường dẫn tương đối (relative link)** bên trong trang web hiện tại thay vì một đường dẫn tuyệt đối (absolute URL). 
+- Khi người dùng bấm vào, trình duyệt sẽ tự động cộng dồn phần chữ đó vào đuôi của tên miền trang web hiện tại (ví dụ: `https://lms-student.rikkei.edu.vn/github.com/...`), dẫn đến việc **link bị lỗi 404 (Không tìm thấy trang)** hoặc chuyển hướng sai địa chỉ hoàn toàn.
